@@ -2,6 +2,8 @@
 
 ---Secure Workloads in Google Kubernetes Engine:Challenge Lab---
 
+Open cloud Shell and run the below commands
+
 gsutil cp gs://spls/gsp335/gsp335.zip .
 unzip gsp335.zip
 
@@ -24,7 +26,7 @@ gcloud sql users create wordpress --host % --instance kraken-cloud-sql \ --passw
 
 In navigation menu, click sql, then click add user account, user as username and default password
 
-kubectl create secret generic cloudsql-instance-credentials --from-file key.json
+In cloud shell run the command - kubectl create secret generic cloudsql-instance-credentials --from-file key.json
 
 kubectl create secret generic cloudsql-db-credentials \
     --from-literal username=wordpress \
@@ -32,14 +34,14 @@ kubectl create secret generic cloudsql-db-credentials \
 
 kubectl create -f volume.yaml
 
-select open editor in new tab, then wordpress.yaml, in line 61 delete "instance connection name" and go to navigation menu, click sql, then copy connection name and add that in deleted line 61
+open editor in new tab, then wordpress.yaml, in line 61 delete "instance connection name" and go to navigation menu, click sql, then copy connection name and add that in deleted line 61
 
 open cloud shell,
 kubectl create -f wordpress.yaml
 
 In navigation menu, open kubernetes engine, click workloads check whether it is created or not, if not refresh it until created
 
-helm version
+In cloud shell run the command - helm version
 
 helm repo add stable https://charts.helm.sh/stable
 
@@ -63,15 +65,15 @@ Refresh workloads in kubernetes engine
 
 Go for the previously open editor and click "issuer.yaml" and paste the username1 as your email and save it(ctrl-s)
 
-kubectl apply -f issuer.yaml
+In cloud shell run the command - kubectl apply -f issuer.yaml
 
 In open editor tab, click ingress.yaml and paste the previously saved DNS Record in the place of hostname(line 11 and 14) by removing the hyphens for example(student_01_aec2 - student01aec2) like this
 
-kubectl apply -f ingress.yaml
+In cloud shell run the command - kubectl apply -f ingress.yaml
 
 click services & ingress,refresh it, scroll down then click on DNS Record id, if you are not getting error then refresh, click on advanced, proceed to DNS and click continue, site title- lab, username- lab, auto password, email- username1, select search engine visibility and Install, next click log in and go to lab and check your progress for task 3
 
-kubect1 apply -f network-policy.yaml
+In cloud shell run the command - kubect1 apply -f network-policy.yaml
 
 open editor, click on network policy.yaml and paste the below code atlast and save it
 
@@ -103,7 +105,7 @@ After that run the command - ls
 
 open editor, click psp-restrictive.yaml(change the apiversion - policy/v1beta1) and save it
 
-kubect1 apply -f psp-restrictive.yaml
+In cloud shell run the command - kubect1 apply -f psp-restrictive.yaml
 
 kubect1 apply -f psp-role.yaml
 
