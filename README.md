@@ -115,6 +115,8 @@ Go to kubernetes engine(nav menu), click workloads, refresh it and check progres
 
 Thank you, lab is finished
 
+If you have any doubts, feel free to comment....
+
  
 
 
