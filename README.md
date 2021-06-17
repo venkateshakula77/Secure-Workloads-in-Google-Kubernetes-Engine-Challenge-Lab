@@ -16,9 +16,13 @@ gcloud sql instances create kraken-cloud-sql --region us-central1
 
 gcloud iam service-accounts create kraken-wordpress-sa
 
-gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \ --member="serviceAccount:kraken-wordpress-sa@DEVSHELL_PROJECT_ID.iam.gserviceaccount.com" \ --role="roles/cloudsql.client"
+gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \ --member="serviceAccount:kraken-wordpress-sa@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com" \ --role="roles/cloudsql.client"
 
 gcloud iam service-accounts keys create key.json --iam-account=kraken-wordpress-sa@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com
+
+ls
+
+cat key.json
 
 gcloud sql databases create wordpress --instance kraken-cloud-sql --charset utf8 --collation utf8_general_ci
 
